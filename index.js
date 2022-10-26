@@ -46,7 +46,7 @@ app.post('/pessoas', (req, res) => {
   res.send('Salvar pessoas')
 })
 
-app.delete('/pessoas', (req, res) => {
+app.delete('/pessoas/:id', (req, res) => {
   res.send('Deletar pessoas')
 })
 
