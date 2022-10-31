@@ -10,7 +10,7 @@
 // }
 // testar();
 
-//Sincronizar o banco de dados
+// Sincronizar o banco de dados
 // const pessoa = require('./models/Pessoa');
 // async function sincronizar(){
 //   await pessoa.sync();
@@ -29,21 +29,27 @@
 // }
 // salvar();
 
-const express = require('express')
-const app = express()
-require('dotenv').config()
-const port = process.env.API_PORT
+const express = require('express');
+const app = express();
+app.use(express.json());
+require('dotenv').config();
+const port = process.env.API_PORT;
 
-app.get('/pessoas', (req, res) => {
+app.get('/pessoas', async (req, res) => {
   res.send('Listar pessoas')
 })
 
-app.get('/pessoas/:id', (req, res) => {
+app.get('/pessoas/:id', async (req, res) => {
+  //Recuperando os parâmetros da requisição
+  console.log(req.params.id);
   res.send('Buscar pessoas')
 })
 
 app.post('/pessoas', (req, res) => {
-  res.send('Salvar pessoas')
+  //Recuperar o corpo da requisição
+  console.log(req.body.email);
+  //Alterar o estado da resposta
+  res.status(201).send('Salvar pessoas');
 })
 
 app.delete('/pessoas/:id', (req, res) => {
