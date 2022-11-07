@@ -10,4 +10,9 @@ const salvarPessoa = async (req,res) =>{
     }
 }
 
-module.exports = {salvarPessoa};
+const listarPessoas = async (req, res) =>{
+    const pessoas = await Pessoa.findAll();
+    res.status(200).send(pessoas);
+}
+
+module.exports = {salvarPessoa, listarPessoas};
