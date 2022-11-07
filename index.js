@@ -34,6 +34,7 @@ const app = express();
 app.use(express.json());
 require('dotenv').config();
 const port = process.env.API_PORT;
+const pessoaController = require('./controllers/PessoaController');
 
 app.get('/pessoas', async (req, res) => {
   res.send('Listar pessoas')
@@ -45,12 +46,7 @@ app.get('/pessoas/:id', async (req, res) => {
   res.send('Buscar pessoas')
 })
 
-app.post('/pessoas', (req, res) => {
-  //Recuperar o corpo da requisição
-  console.log(req.body.email);
-  //Alterar o estado da resposta
-  res.status(201).send('Salvar pessoas');
-})
+app.post('/pessoas', pessoaController.salvarPessoa);
 
 app.delete('/pessoas/:id', (req, res) => {
   res.send('Deletar pessoas')
