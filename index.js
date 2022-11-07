@@ -36,13 +36,9 @@ require('dotenv').config();
 const port = process.env.API_PORT;
 const pessoaController = require('./controllers/PessoaController');
 
-app.get('/pessoas', pessoaController.listarPessoas)
+app.get('/pessoas', pessoaController.listarPessoas);
 
-app.get('/pessoas/:id', async (req, res) => {
-  //Recuperando os parâmetros da requisição
-  console.log(req.params.id);
-  res.send('Buscar pessoas')
-})
+app.get('/pessoas/:id', pessoaController.buscarPessoa);
 
 app.post('/pessoas', pessoaController.salvarPessoa);
 

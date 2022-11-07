@@ -15,4 +15,13 @@ const listarPessoas = async (req, res) =>{
     res.status(200).send(pessoas);
 }
 
-module.exports = {salvarPessoa, listarPessoas};
+const buscarPessoa = async (req, res)=>{
+    const pessoa = await Pessoa.findByPk(req.params.id);
+    if(pessoa === null){
+        res.status(404).send('Usuário não encontrado');
+    }else{
+        res.status(200).send(pessoa);
+    }
+}
+
+module.exports = {salvarPessoa, listarPessoas, buscarPessoa};
