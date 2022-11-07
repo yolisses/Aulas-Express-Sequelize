@@ -42,9 +42,7 @@ app.get('/pessoas/:id', pessoaController.buscarPessoa);
 
 app.post('/pessoas', pessoaController.salvarPessoa);
 
-app.delete('/pessoas/:id', (req, res) => {
-  res.send('Deletar pessoas')
-})
+app.delete('/pessoas/:id', pessoaController.deletarPessoa);
 
 app.put('/pessoas/:id', (req, res) => {
   res.send('Atualizar pessoas')
