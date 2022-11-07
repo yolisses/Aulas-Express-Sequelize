@@ -34,4 +34,15 @@ const deletarPessoa = async (req,res)=>{
     }
 }
 
-module.exports = {salvarPessoa, listarPessoas, buscarPessoa, deletarPessoa};
+const atualizarPessoa = async (req,res)=>{
+    const pessoa = await Pessoa.findByPk(req.params.id);
+    if(pessoa === null){
+        res.status(404).send('Usuário não encontrado');
+    }else{
+        pessoa.set(req.body);
+        await pessoa.save();
+        res.status(200).send('Atualizado com sucesso');
+    }
+}
+
+module.exports = {salvarPessoa, listarPessoas, buscarPessoa, deletarPessoa, atualizarPessoa};
