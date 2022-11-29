@@ -1,4 +1,4 @@
-import { Person } from "../models/Person.js";
+import { Person } from "../models/person.js";
 
 const savePerson = async (req, res) => {
   try {

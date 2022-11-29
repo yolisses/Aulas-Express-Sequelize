@@ -1,6 +1,6 @@
-import { API_PORT } from "./env.js";
 import express from "express";
-import { personController } from "./controllers/PersonController.js";
+import { API_PORT } from "./env.js";
+import { personController } from "./controllers/personController.js";
 
 const app = express();
 app.use(express.json());
