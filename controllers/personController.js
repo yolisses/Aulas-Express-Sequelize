@@ -17,7 +17,7 @@ async function listPersons(req, res) {
 }
 
 async function findPerson(req, res) {
-  const id = req.params.id;
+  const { id } = req.params;
   const key = "person" + id;
   let person = JSON.parse(await cache.get(key));
   if (!person) {
@@ -32,23 +32,27 @@ async function findPerson(req, res) {
 }
 
 async function deletePerson(req, res) {
-  const person = await Person.findByPk(req.params.id);
+  const { id } = req.params;
+  const person = await Person.findByPk(id);
   if (person === null) {
     res.status(404).send("User not found");
   } else {
     await person.destroy();
     res.status(200).send("Successfully deleted");
+    cache.del("person" + id);
   }
 }
 
 async function updatePerson(req, res) {
-  const person = await Person.findByPk(req.params.id);
+  const { id } = req.params;
+  const person = await Person.findByPk(id);
   if (person === null) {
     res.status(404).send("User not found");
   } else {
     person.set(req.body);
     await person.save();
     res.status(200).send("Successfully updated");
+    cache.del("person" + id);
   }
 }
 
