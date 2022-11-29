@@ -12,6 +12,7 @@
     "url": "https://github.com/Bancos-de-Dados-II/Aulas-Express-Sequelize/issues"
   },
   "scripts": {
+    "migrate": "node sync.js",
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
