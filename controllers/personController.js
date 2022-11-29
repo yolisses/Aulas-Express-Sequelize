@@ -1,6 +1,6 @@
 import { Person } from "../models/person.js";
 
-const savePerson = async (req, res) => {
+async function savePerson(req, res) {
   try {
     const person = Person.build(req.body);
     await person.save();
@@ -8,23 +8,23 @@ const savePerson = async (req, res) => {
   } catch {
     res.status(400).send("Error on save");
   }
-};
+}
 
-const listPersons = async (req, res) => {
+async function listPersons(req, res) {
   const persons = await Person.findAll();
   res.status(200).send(persons);
-};
+}
 
-const findPerson = async (req, res) => {
+async function findPerson(req, res) {
   const person = await Person.findByPk(req.params.id);
   if (person === null) {
     res.status(404).send("User not found");
   } else {
     res.status(200).send(person);
   }
-};
+}
 
-const deletePerson = async (req, res) => {
+async function deletePerson(req, res) {
   const person = await Person.findByPk(req.params.id);
   if (person === null) {
     res.status(404).send("User not found");
@@ -32,9 +32,9 @@ const deletePerson = async (req, res) => {
     await person.destroy();
     res.status(200).send("Successfully deleted");
   }
-};
+}
 
-const updatePerson = async (req, res) => {
+async function updatePerson(req, res) {
   const person = await Person.findByPk(req.params.id);
   if (person === null) {
     res.status(404).send("User not found");
@@ -43,7 +43,7 @@ const updatePerson = async (req, res) => {
     await person.save();
     res.status(200).send("Successfully updated");
   }
-};
+}
 
 export const personController = {
   savePerson,
