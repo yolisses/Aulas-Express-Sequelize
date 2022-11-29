@@ -1,3 +1,4 @@
+import { cache } from "../database/cache.js";
 import { Person } from "../models/person.js";
 
 async function savePerson(req, res) {
@@ -16,12 +17,18 @@ async function listPersons(req, res) {
 }
 
 async function findPerson(req, res) {
-  const person = await Person.findByPk(req.params.id);
-  if (person === null) {
-    res.status(404).send("User not found");
-  } else {
-    res.status(200).send(person);
+  const id = req.params.id;
+  const key = "person" + id;
+  let person = JSON.parse(await cache.get(key));
+  if (!person) {
+    person = await Person.findByPk(id);
+    if (person) {
+      const oneHour = 3600;
+      cache.set(key, JSON.stringify(person), { EX: oneHour });
+    }
   }
+  if (person) res.status(200).send(person);
+  else res.status(404).send("User not found");
 }
 
 async function deletePerson(req, res) {
