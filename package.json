@@ -4,7 +4,7 @@
   "type": "module",
   "license": "ISC",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "version": "1.0.1",
   "name": "aulas-express-sequelize",
   "homepage": "https://github.com/Bancos-de-Dados-II/Aulas-Express-Sequelize#readme",
@@ -12,7 +12,7 @@
     "url": "https://github.com/Bancos-de-Dados-II/Aulas-Express-Sequelize/issues"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

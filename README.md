@@ -28,4 +28,4 @@ Você pode alerar os dados da conexão do banco e da porta da API no arquivo .en
 
 ## Uso
 
-Todos os comandos do uso do banco estão no arquivo index.js. É necessário realizar refatoração do código, pois foi feito de forma simples para facilitar na didática do exemplo.
+Todos os comandos do uso do banco estão no arquivo server.js. É necessário realizar refatoração do código, pois foi feito de forma simples para facilitar na didática do exemplo.
