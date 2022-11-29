@@ -11,17 +11,17 @@
 // testar();
 
 // Sincronizar o banco de dados
-// const pessoa = require('./models/Pessoa');
+// const person = require('./models/Person');
 // async function sincronizar(){
-//   await pessoa.sync();
+//   await person.sync();
 //   console.log('Sincronizado');
 // }
 // sincronizar();
 
-//Salvar uma pessoa
-// const pessoa = require('./models/Pessoa');
+//Salvar uma person
+// const person = require('./models/Person');
 // async function salvar(){
-//   const paulo = pessoa.build({
+//   const paulo = person.build({
 //     nome: "Paulo",
 //     email: "paulo@gmail.com"
 //   });
@@ -34,14 +34,14 @@ const app = express();
 app.use(express.json());
 require("dotenv").config();
 const port = process.env.API_PORT;
-const pessoaController = require("./controllers/PessoaController");
+const personController = require("./controllers/PersonController");
 
-//Rotas para a entidade pessoa
-app.get("/pessoas", pessoaController.listarPessoas);
-app.get("/pessoas/:id", pessoaController.buscarPessoa);
-app.post("/pessoas", pessoaController.salvarPessoa);
-app.delete("/pessoas/:id", pessoaController.deletarPessoa);
-app.put("/pessoas/:id", pessoaController.atualizarPessoa);
+//Rotas para a entidade person
+app.get("/persons", personController.listarPersons);
+app.get("/persons/:id", personController.buscarPerson);
+app.post("/persons", personController.salvarPerson);
+app.delete("/persons/:id", personController.deletarPerson);
+app.put("/persons/:id", personController.atualizarPerson);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

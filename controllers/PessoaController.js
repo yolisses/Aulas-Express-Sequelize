@@ -1,54 +1,54 @@
-const Pessoa = require("../models/Pessoa");
+const Person = require("../models/Person");
 
-const salvarPessoa = async (req, res) => {
+const salvarPerson = async (req, res) => {
   try {
-    const pessoa = Pessoa.build(req.body);
-    await pessoa.save();
+    const person = Person.build(req.body);
+    await person.save();
     res.status(201).send("Usuário criado");
   } catch {
     res.status(400).send("Falha ao salvar");
   }
 };
 
-const listarPessoas = async (req, res) => {
-  const pessoas = await Pessoa.findAll();
-  res.status(200).send(pessoas);
+const listarPersons = async (req, res) => {
+  const persons = await Person.findAll();
+  res.status(200).send(persons);
 };
 
-const buscarPessoa = async (req, res) => {
-  const pessoa = await Pessoa.findByPk(req.params.id);
-  if (pessoa === null) {
+const buscarPerson = async (req, res) => {
+  const person = await Person.findByPk(req.params.id);
+  if (person === null) {
     res.status(404).send("Usuário não encontrado");
   } else {
-    res.status(200).send(pessoa);
+    res.status(200).send(person);
   }
 };
 
-const deletarPessoa = async (req, res) => {
-  const pessoa = await Pessoa.findByPk(req.params.id);
-  if (pessoa === null) {
+const deletarPerson = async (req, res) => {
+  const person = await Person.findByPk(req.params.id);
+  if (person === null) {
     res.status(404).send("Usuário não encontrado");
   } else {
-    await pessoa.destroy();
+    await person.destroy();
     res.status(200).send("Removido com sucesso");
   }
 };
 
-const atualizarPessoa = async (req, res) => {
-  const pessoa = await Pessoa.findByPk(req.params.id);
-  if (pessoa === null) {
+const atualizarPerson = async (req, res) => {
+  const person = await Person.findByPk(req.params.id);
+  if (person === null) {
     res.status(404).send("Usuário não encontrado");
   } else {
-    pessoa.set(req.body);
-    await pessoa.save();
+    person.set(req.body);
+    await person.save();
     res.status(200).send("Atualizado com sucesso");
   }
 };
 
 module.exports = {
-  salvarPessoa,
-  listarPessoas,
-  buscarPessoa,
-  deletarPessoa,
-  atualizarPessoa,
+  salvarPerson,
+  listarPersons,
+  buscarPerson,
+  deletarPerson,
+  atualizarPerson,
 };

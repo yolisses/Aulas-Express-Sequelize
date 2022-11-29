@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/db");
 
-const Pessoa = sequelize.define(
-  "Pessoa",
+const Person = sequelize.define(
+  "Person",
   {
     // Model attributes are defined here
     id: {
@@ -24,4 +24,4 @@ const Pessoa = sequelize.define(
   }
 );
 
-module.exports = Pessoa;
+module.exports = Person;
