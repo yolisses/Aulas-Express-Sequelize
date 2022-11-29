@@ -47,8 +47,8 @@ const updatePerson = async (req, res) => {
 
 export const personController = {
   savePerson,
-  listPersons,
   findPerson,
+  listPersons,
   deletePerson,
   updatePerson,
 };
