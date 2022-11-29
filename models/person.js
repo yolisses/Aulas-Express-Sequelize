@@ -9,7 +9,7 @@ export const Person = db.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    nome: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
