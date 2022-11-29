@@ -1,4 +1,4 @@
-const Person = require("../models/Person");
+import { Person } from "../models/Person.js";
 
 const savePerson = async (req, res) => {
   try {
@@ -45,7 +45,7 @@ const updatePerson = async (req, res) => {
   }
 };
 
-module.exports = {
+export const personController = {
   savePerson,
   listPersons,
   findPerson,
